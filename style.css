@@ -256,6 +256,132 @@ h2 em{color:#C9A15B;font-style:italic}
   .hero-btns{flex-direction:column;align-items:center}
 }
 
+/* ===== MOBILE SCROLL & PERFORMANCE OPTIMIZATIONS ===== */
+/* Only applies to touch/mobile devices — desktop is completely unchanged */
+
+@media(max-width:1024px){
+  /* Smooth scroll momentum for touch devices */
+  html{
+    scroll-behavior:smooth;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  /* Disable custom cursor on touch devices — improves performance & UX */
+  body{cursor:auto!important}
+  .cursor,.cursor-ring{display:none!important}
+  a,button,.cat-btn,.food-card,.masonry-item,.magnetic,
+  .nav-cta,.nav-toggle,.mobile-close,.social-link,
+  .btn-primary,.btn-outline{
+    cursor:pointer!important;
+  }
+
+  /* GPU-accelerate sections for smoother scroll compositing */
+  section,.section-story,.section-showcase,.section-experience,
+  .section-menu,.section-parallax,.section-testimonials,
+  .section-franchise,.section-gallery,.section-contact{
+    will-change:auto;
+    transform:translateZ(0);
+    -webkit-transform:translateZ(0);
+  }
+
+  /* Reduce parallax intensity — prevents jank on mobile scroll */
+  .section-parallax{height:60vh}
+  .parallax-bg{inset:-5%}
+
+  /* Smoother reveal animations with reduced motion distance */
+  .reveal-up{transform:translateY(30px);transition-duration:.5s}
+  .reveal-left{transform:translateX(-40px);transition-duration:.6s}
+  .reveal-right{transform:translateX(40px);transition-duration:.6s}
+
+  /* Smooth horizontal scroll for food showcase on mobile */
+  .showcase-track-wrap{
+    -webkit-overflow-scrolling:touch;
+    scroll-snap-type:x mandatory;
+    scroll-behavior:smooth;
+    overscroll-behavior-x:contain;
+  }
+  .food-card{
+    scroll-snap-align:center;
+  }
+
+  /* Smooth horizontal scroll for testimonials — allow touch drag */
+  .test-track-wrap{
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    scroll-snap-type:x mandatory;
+    scroll-behavior:smooth;
+    overscroll-behavior-x:contain;
+  }
+  .test-track{
+    animation:none!important;
+  }
+  .test-card{
+    scroll-snap-align:center;
+  }
+
+  /* Prevent page-level horizontal overflow from any rogue element */
+  body{
+    overflow-x:hidden;
+    overscroll-behavior-x:none;
+  }
+
+  /* Increase touch target sizes for mobile */
+  .cat-btn{padding:.8rem 1.6rem;font-size:.78rem;min-height:44px}
+  .btn-primary,.btn-outline{padding:1rem 2rem;min-height:48px}
+  .nav-toggle{min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center}
+  .social-link{width:48px;height:48px}
+  .footer-links a{padding:.5rem 0;min-height:44px;display:inline-flex;align-items:center}
+
+  /* Smoother mobile menu transition */
+  .mobile-menu{
+    transition:transform .4s cubic-bezier(.25,.1,.25,1);
+    -webkit-overflow-scrolling:touch;
+    overflow-y:auto;
+  }
+}
+
+@media(max-width:768px){
+  /* Further reduce animation complexity on small screens */
+  .food-card:hover{transform:none;box-shadow:none}
+  .menu-item:hover{transform:none;box-shadow:none}
+  .exp-card:hover{transform:none}
+  .masonry-item:hover img{transform:none}
+
+  /* Disable hover-only effects that don't apply to touch */
+  .food-card:hover .food-card-img img{transform:none}
+  .menu-item:hover img{transform:none}
+  .masonry-item::after{display:none}
+
+  /* Better spacing for mobile readability */
+  .section-story,.section-menu,.section-contact{padding:4rem 1.5rem}
+  .section-experience,.section-franchise,.section-gallery{padding:4rem 1.5rem}
+  .showcase-track{padding:1rem 1.5rem}
+  .test-track{padding:1rem 1.5rem}
+
+  /* Scroll hint for showcase on mobile */
+  .showcase-drag-hint{content:'← Swipe to explore →'}
+
+  /* Improve gallery grid touch experience */
+  .masonry-item{height:180px}
+  .masonry-item.tall{height:370px}
+  .masonry-overlay{opacity:.4}
+}
+
+/* Respect user's reduced motion preferences */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto!important}
+  *,*::before,*::after{
+    animation-duration:0.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:0.01ms!important;
+  }
+  .test-track{animation:none!important}
+  .reveal-up,.reveal-left,.reveal-right{
+    opacity:1!important;transform:none!important;
+    transition:none!important;
+  }
+}
+
 /* ===== MASONRY HEIGHTS ===== */
 .masonry-item{height:220px}
 .masonry-item.tall{height:449px}

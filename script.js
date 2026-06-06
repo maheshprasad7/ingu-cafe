@@ -1,29 +1,34 @@
-// ===== CURSOR =====
-const cursor = document.createElement('div');
-cursor.classList.add('cursor');
-const cursorRing = document.createElement('div');
-cursorRing.classList.add('cursor-ring');
-document.body.appendChild(cursor);
-document.body.appendChild(cursorRing);
+// ===== MOBILE DETECTION =====
+const isMobile = window.innerWidth <= 1024 || 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-let mx = 0, my = 0, rx = 0, ry = 0;
-document.addEventListener('mousemove', e => {
-  mx = e.clientX; my = e.clientY;
-  cursor.style.left = mx + 'px';
-  cursor.style.top = my + 'px';
-});
-(function animRing() {
-  rx += (mx - rx) * 0.12;
-  ry += (my - ry) * 0.12;
-  cursorRing.style.left = rx + 'px';
-  cursorRing.style.top = ry + 'px';
-  requestAnimationFrame(animRing);
-})();
+// ===== CURSOR (Desktop Only) =====
+if (!isMobile) {
+  const cursor = document.createElement('div');
+  cursor.classList.add('cursor');
+  const cursorRing = document.createElement('div');
+  cursorRing.classList.add('cursor-ring');
+  document.body.appendChild(cursor);
+  document.body.appendChild(cursorRing);
 
-document.querySelectorAll('a,button,.cat-btn,.food-card,.masonry-item,.magnetic').forEach(el => {
-  el.addEventListener('mouseenter', () => { cursor.style.transform = 'translate(-50%,-50%) scale(2)'; cursorRing.style.transform = 'translate(-50%,-50%) scale(1.5)'; });
-  el.addEventListener('mouseleave', () => { cursor.style.transform = 'translate(-50%,-50%) scale(1)'; cursorRing.style.transform = 'translate(-50%,-50%) scale(1)'; });
-});
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px';
+    cursor.style.top = my + 'px';
+  });
+  (function animRing() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    cursorRing.style.left = rx + 'px';
+    cursorRing.style.top = ry + 'px';
+    requestAnimationFrame(animRing);
+  })();
+
+  document.querySelectorAll('a,button,.cat-btn,.food-card,.masonry-item,.magnetic').forEach(el => {
+    el.addEventListener('mouseenter', () => { cursor.style.transform = 'translate(-50%,-50%) scale(2)'; cursorRing.style.transform = 'translate(-50%,-50%) scale(1.5)'; });
+    el.addEventListener('mouseleave', () => { cursor.style.transform = 'translate(-50%,-50%) scale(1)'; cursorRing.style.transform = 'translate(-50%,-50%) scale(1)'; });
+  });
+}
 
 // ===== LOADER =====
 window.addEventListener('load', () => {
@@ -65,9 +70,9 @@ function initScrollAnimations() {
   }, { threshold: 0.15 });
   document.querySelectorAll('.reveal-up,.reveal-left,.reveal-right').forEach(el => observer.observe(el));
 
-  // Parallax
+  // Parallax (Desktop only — scroll transforms cause jank on mobile)
   const pBg = document.getElementById('parallaxBg');
-  if (pBg) {
+  if (pBg && !isMobile) {
     window.addEventListener('scroll', () => {
       const rect = pBg.parentElement.getBoundingClientRect();
       if (rect.top < window.innerHeight && rect.bottom > 0) {
@@ -113,7 +118,7 @@ function initScrollAnimations() {
   counters.forEach(c => counterObs.observe(c));
 }
 
-// ===== PARTICLES =====
+// ===== PARTICLES (Reduced on mobile for performance) =====
 const canvas = document.getElementById('particleCanvas');
 const ctx = canvas.getContext('2d');
 let particles = [];
@@ -121,7 +126,8 @@ function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = wind
 resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
 
-for (let i = 0; i < 60; i++) {
+const particleCount = isMobile ? 15 : 60;
+for (let i = 0; i < particleCount; i++) {
   particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, r: Math.random() * 1.5 + 0.3, vx: (Math.random() - 0.5) * 0.3, vy: -Math.random() * 0.5 - 0.1, o: Math.random() });
 }
 
@@ -141,21 +147,30 @@ function drawParticles() {
 }
 drawParticles();
 
-// Mouse parallax on hero
-document.getElementById('hero').addEventListener('mousemove', e => {
-  const cx = e.clientX / window.innerWidth - 0.5;
-  const cy = e.clientY / window.innerHeight - 0.5;
-  const img = document.querySelector('.hero-img');
-  if (img) img.style.transform = `scale(1.05) translate(${cx * 15}px, ${cy * 10}px)`;
-});
+// Mouse parallax on hero (Desktop only — causes jank on mobile)
+if (!isMobile) {
+  document.getElementById('hero').addEventListener('mousemove', e => {
+    const cx = e.clientX / window.innerWidth - 0.5;
+    const cy = e.clientY / window.innerHeight - 0.5;
+    const img = document.querySelector('.hero-img');
+    if (img) img.style.transform = `scale(1.05) translate(${cx * 15}px, ${cy * 10}px)`;
+  });
+}
 
-// ===== DRAG SCROLL (Showcase) =====
+// ===== DRAG SCROLL (Showcase) — Mouse + Touch support =====
 const trackWrap = document.querySelector('.showcase-track-wrap');
 let isDragging = false, startX = 0, scrollLeft = 0;
+
+// Mouse drag (Desktop)
 trackWrap.addEventListener('mousedown', e => { isDragging = true; startX = e.pageX - trackWrap.offsetLeft; scrollLeft = trackWrap.scrollLeft; trackWrap.style.cursor = 'grabbing'; });
 trackWrap.addEventListener('mouseleave', () => { isDragging = false; trackWrap.style.cursor = 'grab'; });
 trackWrap.addEventListener('mouseup', () => { isDragging = false; trackWrap.style.cursor = 'grab'; });
 trackWrap.addEventListener('mousemove', e => { if (!isDragging) return; e.preventDefault(); const x = e.pageX - trackWrap.offsetLeft; trackWrap.scrollLeft = scrollLeft - (x - startX); });
+
+// Touch drag (Mobile) — smoother swipe-to-scroll
+trackWrap.addEventListener('touchstart', e => { isDragging = true; startX = e.touches[0].pageX - trackWrap.offsetLeft; scrollLeft = trackWrap.scrollLeft; }, { passive: true });
+trackWrap.addEventListener('touchend', () => { isDragging = false; }, { passive: true });
+trackWrap.addEventListener('touchmove', e => { if (!isDragging) return; const x = e.touches[0].pageX - trackWrap.offsetLeft; trackWrap.scrollLeft = scrollLeft - (x - startX); }, { passive: true });
 
 // ===== MENU CATEGORY SWITCH =====
 document.querySelectorAll('.cat-btn').forEach(btn => {
@@ -186,16 +201,18 @@ document.querySelectorAll('.masonry-item').forEach(item => {
 document.getElementById('lbClose').addEventListener('click', () => lb.classList.remove('open'));
 lb.addEventListener('click', e => { if (e.target === lb) lb.classList.remove('open'); });
 
-// ===== MAGNETIC BUTTONS =====
-document.querySelectorAll('.magnetic').forEach(btn => {
-  btn.addEventListener('mousemove', e => {
-    const r = btn.getBoundingClientRect();
-    const dx = e.clientX - (r.left + r.width / 2);
-    const dy = e.clientY - (r.top + r.height / 2);
-    btn.style.transform = `translate(${dx * 0.25}px, ${dy * 0.25}px)`;
+// ===== MAGNETIC BUTTONS (Desktop Only) =====
+if (!isMobile) {
+  document.querySelectorAll('.magnetic').forEach(btn => {
+    btn.addEventListener('mousemove', e => {
+      const r = btn.getBoundingClientRect();
+      const dx = e.clientX - (r.left + r.width / 2);
+      const dy = e.clientY - (r.top + r.height / 2);
+      btn.style.transform = `translate(${dx * 0.25}px, ${dy * 0.25}px)`;
+    });
+    btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
   });
-  btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
-});
+}
 
 // ===== AUTO TESTIMONIALS DUPLICATE =====
 const testTrack = document.getElementById('testTrack');
