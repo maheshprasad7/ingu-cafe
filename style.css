@@ -296,12 +296,26 @@ h2 em{color:#C9A15B;font-style:italic}
   /* Smooth horizontal scroll for food showcase on mobile */
   .showcase-track-wrap{
     -webkit-overflow-scrolling:touch;
-    scroll-snap-type:x mandatory;
-    scroll-behavior:smooth;
+    scroll-snap-type:x proximity;
     overscroll-behavior-x:contain;
   }
   .food-card{
-    scroll-snap-align:center;
+    scroll-snap-align:start;
+    will-change:transform;
+    transform:translateZ(0);
+    -webkit-transform:translateZ(0);
+    backface-visibility:hidden;
+    -webkit-backface-visibility:hidden;
+    transition:none!important;
+  }
+  .food-card-img img{
+    transition:none!important;
+    will-change:auto;
+  }
+  .showcase-track{
+    will-change:transform;
+    transform:translateZ(0);
+    -webkit-transform:translateZ(0);
   }
 
   /* Smooth horizontal scroll for testimonials — allow touch drag */

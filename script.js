@@ -167,10 +167,7 @@ trackWrap.addEventListener('mouseleave', () => { isDragging = false; trackWrap.s
 trackWrap.addEventListener('mouseup', () => { isDragging = false; trackWrap.style.cursor = 'grab'; });
 trackWrap.addEventListener('mousemove', e => { if (!isDragging) return; e.preventDefault(); const x = e.pageX - trackWrap.offsetLeft; trackWrap.scrollLeft = scrollLeft - (x - startX); });
 
-// Touch drag (Mobile) — smoother swipe-to-scroll
-trackWrap.addEventListener('touchstart', e => { isDragging = true; startX = e.touches[0].pageX - trackWrap.offsetLeft; scrollLeft = trackWrap.scrollLeft; }, { passive: true });
-trackWrap.addEventListener('touchend', () => { isDragging = false; }, { passive: true });
-trackWrap.addEventListener('touchmove', e => { if (!isDragging) return; const x = e.touches[0].pageX - trackWrap.offsetLeft; trackWrap.scrollLeft = scrollLeft - (x - startX); }, { passive: true });
+// Touch scroll is handled natively by CSS (-webkit-overflow-scrolling:touch) for smooth momentum
 
 // ===== MENU CATEGORY SWITCH =====
 document.querySelectorAll('.cat-btn').forEach(btn => {
