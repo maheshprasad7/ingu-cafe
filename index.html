@@ -1,513 +1,374 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>INGU CAFE — Where South Indian Tradition Meets Modern Indulgence</title>
-  <meta name="description"
-    content="INGU CAFE is a premium South Indian dining experience. Authentic recipes, fresh ingredients, crafted daily. Reserve your table today.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>INGU CAFE — Where South Indian Tradition Meets Modern Indulgence</title>
+<meta name="description" content="INGU CAFE is a premium South Indian dining experience. Authentic recipes, fresh ingredients, crafted daily. Reserve your table today.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <!-- Loader -->
-  <div id="loader">
-    <div class="loader-logo">INGU</div>
-    <div class="loader-bar">
-      <div class="loader-fill"></div>
+<!-- Loader -->
+<div id="loader">
+  <div class="loader-logo">INGU</div>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+</div>
+
+<!-- Progress Bar -->
+<div id="progress-bar"></div>
+
+<!-- Navigation -->
+<nav id="navbar">
+  <div class="nav-logo">INGU <span>CAFE</span></div>
+  <ul class="nav-links">
+    <li><a href="#story">Story</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#franchise">Franchise</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Reserve Table</a>
+  <button class="nav-toggle" id="navToggle">&#9776;</button>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">&times;</button>
+  <ul>
+    <li><a href="#story" class="mob-link">Story</a></li>
+    <li><a href="#menu" class="mob-link">Menu</a></li>
+    <li><a href="#experience" class="mob-link">Experience</a></li>
+    <li><a href="#franchise" class="mob-link">Franchise</a></li>
+    <li><a href="#contact" class="mob-link">Contact</a></li>
+  </ul>
+</div>
+
+<!-- SECTION 1: HERO -->
+<section id="hero">
+  <div class="hero-bg">
+    <img src="images/hero_dosa.png" alt="INGU CAFE Signature Masala Dosa" class="hero-img">
+    <div class="hero-overlay"></div>
+    <canvas id="particleCanvas"></canvas>
+  </div>
+  <div class="hero-content">
+    <div class="hero-tagline">
+      <span class="word" id="w1">Tradition.</span>
+      <span class="word" id="w2">Flavour.</span>
+      <span class="word" id="w3">Experience.</span>
+    </div>
+    <h1 class="hero-title" id="heroTitle">Welcome to <em>INGU CAFE</em></h1>
+    <p class="hero-sub">Where South Indian tradition meets modern indulgence.</p>
+    <div class="hero-btns">
+      <a href="#menu" class="btn-primary magnetic">Explore Menu</a>
+      <a href="#contact" class="btn-outline magnetic">Reserve Table</a>
     </div>
   </div>
-
-  <!-- Progress Bar -->
-  <div id="progress-bar"></div>
-
-  <!-- Navigation -->
-  <nav id="navbar">
-    <div class="nav-logo">INGU <span>CAFE</span></div>
-    <ul class="nav-links">
-      <li><a href="#story">Story</a></li>
-      <li><a href="#menu">Menu</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#franchise">Franchise</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <a href="#contact" class="nav-cta">Reserve Table</a>
-    <button class="nav-toggle" id="navToggle">&#9776;</button>
-  </nav>
-
-  <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobileMenu">
-    <button class="mobile-close" id="mobileClose">&times;</button>
-    <ul>
-      <li><a href="#story" class="mob-link">Story</a></li>
-      <li><a href="#menu" class="mob-link">Menu</a></li>
-      <li><a href="#experience" class="mob-link">Experience</a></li>
-      <li><a href="#franchise" class="mob-link">Franchise</a></li>
-      <li><a href="#contact" class="mob-link">Contact</a></li>
-    </ul>
+  <div class="hero-scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
   </div>
+</section>
 
-  <!-- SECTION 1: HERO -->
-  <section id="hero">
-    <div class="hero-bg">
-      <img src="images/hero_dosa.png" alt="INGU CAFE Signature Masala Dosa" class="hero-img">
-      <div class="hero-overlay"></div>
-      <canvas id="particleCanvas"></canvas>
+<!-- SECTION 2: BRAND STORY -->
+<section id="story" class="section-story">
+  <div class="story-grid">
+    <div class="story-img-wrap reveal-left">
+      <img src="images/brand_story.png" alt="Heritage of INGU CAFE">
+      <div class="story-img-accent"></div>
     </div>
-    <div class="hero-content">
-      <div class="hero-tagline">
-        <span class="word" id="w1">Tradition.</span>
-        <span class="word" id="w2">Flavour.</span>
-        <span class="word" id="w3">Experience.</span>
-      </div>
-      <h1 class="hero-title" id="heroTitle">Welcome to <em>INGU CAFE</em></h1>
-      <p class="hero-sub">Where South Indian tradition meets modern indulgence.</p>
-      <div class="hero-btns">
-        <a href="#menu" class="btn-primary magnetic">Explore Menu</a>
-        <a href="#contact" class="btn-outline magnetic">Reserve Table</a>
-      </div>
-    </div>
-    <div class="hero-scroll-hint">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
-    </div>
-  </section>
-
-  <!-- SECTION 2: BRAND STORY -->
-  <section id="story" class="section-story">
-    <div class="story-grid">
-      <div class="story-img-wrap reveal-left">
-        <img src="images/brand_story.png" alt="Heritage of INGU CAFE">
-        <div class="story-img-accent"></div>
-      </div>
-      <div class="story-text reveal-right">
-        <span class="section-label">Our Heritage</span>
-        <h2>More Than Food.<br><em>A Heritage.</em></h2>
-        <p>Born from the kitchens of Tamil Nadu, INGU CAFE carries forward a legacy of recipes passed down through
-          generations. Every dish is a conversation between tradition and the present moment.</p>
-        <p>We source the freshest ingredients, grind our batters fresh each morning, and prepare every dish with the
-          same care a grandmother would. This is not just a cafe — it is a living memory of South India.</p>
-        <div class="story-signature">
-          <svg viewBox="0 0 200 60" class="signature-svg">
-            <path d="M10,45 C30,10 60,50 80,25 C100,5 120,55 150,20 C165,8 185,40 195,30" stroke="#C9A15B"
-              stroke-width="2" fill="none" class="sig-path" />
-          </svg>
-          <span>— The INGU Family</span>
-        </div>
+    <div class="story-text reveal-right">
+      <span class="section-label">Our Heritage</span>
+      <h2>More Than Food.<br><em>A Heritage.</em></h2>
+      <p>Born from the kitchens of Tamil Nadu, INGU CAFE carries forward a legacy of recipes passed down through generations. Every dish is a conversation between tradition and the present moment.</p>
+      <p>We source the freshest ingredients, grind our batters fresh each morning, and prepare every dish with the same care a grandmother would. This is not just a cafe — it is a living memory of South India.</p>
+      <div class="story-signature">
+        <svg viewBox="0 0 200 60" class="signature-svg">
+          <path d="M10,45 C30,10 60,50 80,25 C100,5 120,55 150,20 C165,8 185,40 195,30" stroke="#C9A15B" stroke-width="2" fill="none" class="sig-path"/>
+        </svg>
+        <span>— The INGU Family</span>
       </div>
     </div>
-  </section>
-
-  <!-- SECTION 3: FOOD SHOWCASE -->
-  <section id="showcase" class="section-showcase">
-    <div class="showcase-header reveal-up">
-      <span class="section-label">Our Signatures</span>
-      <h2>Crafted with <em>Soul</em></h2>
-    </div>
-    <div class="showcase-track-wrap">
-      <div class="showcase-track" id="showcaseTrack">
-        <div class="food-card" data-tilt>
-          <div class="food-card-img"><img src="images/hero_dosa.png" alt="Masala Dosa"></div>
-          <div class="food-card-body">
-            <h3>Masala Dosa</h3>
-            <p>Crispy golden crepe, spiced potato, chutneys</p><span class="price">₹ 120</span>
-          </div>
-        </div>
-        <div class="food-card" data-tilt>
-          <div class="food-card-img"><img src="images/ghee_roast.png" alt="Ghee Roast"></div>
-          <div class="food-card-body">
-            <h3>Ghee Roast</h3>
-            <p>Paper-thin dosa, pure desi ghee, golden crisp</p><span class="price">₹ 140</span>
-          </div>
-        </div>
-        <div class="food-card" data-tilt>
-          <div class="food-card-img"><img src="images/idli.png" alt="Idli"></div>
-          <div class="food-card-body">
-            <h3>Soft Idli</h3>
-            <p>Steamed rice cakes, sambar, three chutneys</p><span class="price">₹ 80</span>
-          </div>
-        </div>
-        <div class="food-card" data-tilt>
-          <div class="food-card-img"><img src="images/filter_coffee.png" alt="Filter Coffee"></div>
-          <div class="food-card-body">
-            <h3>Filter Coffee</h3>
-            <p>Traditional South Indian decoction, frothy milk</p><span class="price">₹ 60</span>
-          </div>
-        </div>
-        <div class="food-card" data-tilt>
-          <div class="food-card-img"><img src="images/pongal.png" alt="Pongal"></div>
-          <div class="food-card-body">
-            <h3>Ven Pongal</h3>
-            <p>Slow-cooked rice lentil, ghee, black pepper</p><span class="price">₹ 100</span>
-          </div>
-        </div>
-        <div class="food-card" data-tilt>
-          <div class="food-card-img"><img src="images/vada.png" alt="Vada"></div>
-          <div class="food-card-body">
-            <h3>Medu Vada</h3>
-            <p>Crispy lentil fritter, coconut chutney, sambar</p><span class="price">₹ 70</span>
-          </div>
-        </div>
-        <div class="food-card" data-tilt>
-          <div class="food-card-img"><img src="images/rasam.png" alt="Rasam"></div>
-          <div class="food-card-body">
-            <h3>Pepper Rasam</h3>
-            <p>Tangy, spicy, aromatic soul soup</p><span class="price">₹ 50</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="showcase-drag-hint">← Drag to explore →</div>
-  </section>
-
-  <!-- SECTION 4: EXPERIENCE PILLARS -->
-  <section id="experience" class="section-experience">
-    <div class="exp-header reveal-up">
-      <span class="section-label">The Promise</span>
-      <h2>The INGU <em>Experience</em></h2>
-    </div>
-    <div class="exp-cards">
-      <div class="exp-card reveal-up" style="--d:0.1s">
-        <div class="exp-icon">&#9670;</div>
-        <h3>Authentic Recipes</h3>
-        <p>Every recipe is rooted in generations of South Indian culinary wisdom, untouched and uncompromised.</p>
-      </div>
-      <div class="exp-card reveal-up" style="--d:0.25s">
-        <div class="exp-icon">&#10047;</div>
-        <h3>Fresh Ingredients</h3>
-        <p>Farm-to-table freshness. We source locally and prepare daily — no preservatives, no shortcuts.</p>
-      </div>
-      <div class="exp-card reveal-up" style="--d:0.4s">
-        <div class="exp-icon">&#9734;</div>
-        <h3>Crafted Daily</h3>
-        <p>Our batters are ground at dawn. Our chutneys are made by hand. Every single morning, without exception.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION 5: MENU -->
-  <section id="menu" class="section-menu">
-    <div class="menu-header reveal-up">
-      <span class="section-label">Explore</span>
-      <h2>Our <em>Menu</em></h2>
-    </div>
-    <div class="menu-cats">
-      <button class="cat-btn active" data-cat="breakfast">Breakfast</button>
-      <button class="cat-btn" data-cat="signature">Signature Dishes</button>
-      <button class="cat-btn" data-cat="beverages">Beverages</button>
-      <button class="cat-btn" data-cat="desserts">Desserts</button>
-    </div>
-    <div class="menu-grid" id="menuGrid">
-      <!-- Breakfast -->
-      <div class="menu-item" data-cat="breakfast">
-        <img src="images/idli.png" alt="Idli">
-        <div class="mi-body">
-          <h4>Soft Idli (3 pcs)</h4>
-          <p>With sambar &amp; 2 chutneys</p><span>₹ 80</span>
-        </div>
-      </div>
-      <div class="menu-item" data-cat="breakfast">
-        <img src="images/hero_dosa.png" alt="Masala Dosa">
-        <div class="mi-body">
-          <h4>Masala Dosa</h4>
-          <p>Spiced potato filling, chutneys</p><span>₹ 120</span>
-        </div>
-      </div>
-      <div class="menu-item" data-cat="breakfast">
-        <img src="images/pongal.png" alt="Pongal">
-        <div class="mi-body">
-          <h4>Ven Pongal</h4>
-          <p>Ghee, pepper, cashews</p><span>₹ 100</span>
-        </div>
-      </div>
-      <div class="menu-item" data-cat="breakfast">
-        <img src="images/vada.png" alt="Vada">
-        <div class="mi-body">
-          <h4>Medu Vada (2 pcs)</h4>
-          <p>Sambar &amp; coconut chutney</p><span>₹ 70</span>
-        </div>
-      </div>
-      <!-- Signature -->
-      <div class="menu-item" data-cat="signature" style="display:none">
-        <img src="images/ghee_roast.png" alt="Ghee Roast">
-        <div class="mi-body">
-          <h4>Ghee Roast Dosa</h4>
-          <p>Pure desi ghee, paper thin</p><span>₹ 140</span>
-        </div>
-      </div>
-      <div class="menu-item" data-cat="signature" style="display:none">
-        <img src="images/rasam.png" alt="Rasam">
-        <div class="mi-body">
-          <h4>Pepper Rasam</h4>
-          <p>Aromatic, tangy soul soup</p><span>₹ 50</span>
-        </div>
-      </div>
-      <div class="menu-item" data-cat="signature" style="display:none">
-        <img src="images/hero_dosa.png" alt="Special Dosa">
-        <div class="mi-body">
-          <h4>INGU Special Dosa</h4>
-          <p>Chef's signature creation</p><span>₹ 180</span>
-        </div>
-      </div>
-      <!-- Beverages -->
-      <div class="menu-item" data-cat="beverages" style="display:none">
-        <img src="images/filter_coffee.png" alt="Filter Coffee">
-        <div class="mi-body">
-          <h4>Filter Coffee</h4>
-          <p>Traditional decoction, frothy</p><span>₹ 60</span>
-        </div>
-      </div>
-      <div class="menu-item" data-cat="beverages" style="display:none">
-        <img src="images/rasam.png" alt="Rasam">
-        <div class="mi-body">
-          <h4>Masala Chai</h4>
-          <p>Spiced milk tea, fresh ginger</p><span>₹ 45</span>
-        </div>
-      </div>
-      <!-- Desserts -->
-      <div class="menu-item" data-cat="desserts" style="display:none">
-        <img src="images/pongal.png" alt="Sweet Pongal">
-        <div class="mi-body">
-          <h4>Sweet Pongal</h4>
-          <p>Jaggery, cardamom, cashews</p><span>₹ 90</span>
-        </div>
-      </div>
-      <div class="menu-item" data-cat="desserts" style="display:none">
-        <img src="images/filter_coffee.png" alt="Payasam">
-        <div class="mi-body">
-          <h4>Rice Payasam</h4>
-          <p>Kheer style, cardamom, saffron</p><span>₹ 80</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION 6: PARALLAX -->
-  <section id="parallax-quote" class="section-parallax">
-    <div class="parallax-bg" id="parallaxBg">
-      <img src="images/parallax_bg.png" alt="South Indian Feast">
-    </div>
-    <div class="parallax-overlay"></div>
-    <div class="parallax-text">
-      <h2 class="split-text" id="splitText">Every Plate Tells A Story.</h2>
-    </div>
-  </section>
-
-  <!-- SECTION 7: TESTIMONIALS -->
-  <section id="testimonials" class="section-testimonials">
-    <div class="test-header reveal-up">
-      <span class="section-label">Customer Love</span>
-      <h2>What Our Guests <em>Say</em></h2>
-    </div>
-    <div class="test-track-wrap">
-      <div class="test-track" id="testTrack">
-        <div class="test-card glass">
-          <div class="stars">★★★★★</div>
-          <p>"The filter coffee alone is worth the trip. Absolutely authentic — tastes just like my grandmother's
-            kitchen."</p>
-          <div class="test-author">
-            <div class="test-avatar" style="background:#C9A15B">A</div><span>Ananya R., Chennai</span>
-          </div>
-        </div>
-        <div class="test-card glass">
-          <div class="stars">★★★★★</div>
-          <p>"Best masala dosa in the city, hands down. The crispy texture, the perfectly spiced filling — heaven on a
-            plate."</p>
-          <div class="test-author">
-            <div class="test-avatar" style="background:#8B5E3C">V</div><span>Vikram S., Bangalore</span>
-          </div>
-        </div>
-        <div class="test-card glass">
-          <div class="stars">★★★★★</div>
-          <p>"The ambiance, the food, the service — everything screams premium. INGU CAFE is in a league of its own."
-          </p>
-          <div class="test-author">
-            <div class="test-avatar" style="background:#5C3D2E">P</div><span>Priya M., Coimbatore</span>
-          </div>
-        </div>
-        <div class="test-card glass">
-          <div class="stars">★★★★★</div>
-          <p>"I've eaten South Indian food all my life. INGU brings something special — it's traditional but elevated
-            beautifully."</p>
-          <div class="test-author">
-            <div class="test-avatar" style="background:#7A5230">K</div><span>Karthik N., Hyderabad</span>
-          </div>
-        </div>
-        <div class="test-card glass">
-          <div class="stars">★★★★★</div>
-          <p>"The ghee roast dosa is a masterpiece. Crispy, flavourful, and perfectly paired with their signature
-            sambar."</p>
-          <div class="test-author">
-            <div class="test-avatar" style="background:#C9A15B">S</div><span>Shalini T., Mumbai</span>
-          </div>
-        </div>
-        <div class="test-card glass">
-          <div class="stars">★★★★★</div>
-          <p>"Every visit feels like a celebration. The warmth of the staff and the authenticity of food makes it
-            special."</p>
-          <div class="test-author">
-            <div class="test-avatar" style="background:#8B5E3C">R</div><span>Rajan L., Madurai</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION 8: FRANCHISE -->
-  <section id="franchise" class="section-franchise">
-    <div class="franchise-inner">
-      <span class="section-label" style="color:#C9A15B">Partnership</span>
-      <h2>Bring INGU CAFE<br><em>To Your City</em></h2>
-      <p>Join India's fastest-growing premium South Indian dining brand. We provide end-to-end support — from training
-        to marketing.</p>
-      <div class="counters">
-        <div class="counter-item reveal-up">
-          <span class="counter-num" data-target="50">0</span><span class="counter-suf">+</span>
-          <p>Locations</p>
-        </div>
-        <div class="counter-item reveal-up" style="--d:0.15s">
-          <span class="counter-num" data-target="1000000">0</span><span class="counter-suf">M+</span>
-          <p>Customers Served</p>
-        </div>
-        <div class="counter-item reveal-up" style="--d:0.3s">
-          <span class="counter-num" data-target="95">0</span><span class="counter-suf">%</span>
-          <p>Customer Satisfaction</p>
-        </div>
-      </div>
-      <a href="#contact" class="btn-primary magnetic large">Become A Partner</a>
-    </div>
-  </section>
-
-  <!-- SECTION 9: INSTAGRAM GALLERY -->
-  <section id="gallery" class="section-gallery">
-    <div class="gal-header reveal-up">
-      <span class="section-label">@ingucafe</span>
-      <h2>Follow Our <em>Journey</em></h2>
-    </div>
-    <div class="masonry-grid" id="masonryGrid">
-      <div class="masonry-item" data-src="images/hero_dosa.png"><img src="images/hero_dosa.png" alt="Masala Dosa">
-        <div class="masonry-overlay"><span>&#10531;</span></div>
-      </div>
-      <div class="masonry-item tall" data-src="images/brand_story.png"><img src="images/brand_story.png" alt="Heritage">
-        <div class="masonry-overlay"><span>&#10531;</span></div>
-      </div>
-      <div class="masonry-item" data-src="images/filter_coffee.png"><img src="images/filter_coffee.png"
-          alt="Filter Coffee">
-        <div class="masonry-overlay"><span>&#10531;</span></div>
-      </div>
-      <div class="masonry-item" data-src="images/ghee_roast.png"><img src="images/ghee_roast.png" alt="Ghee Roast">
-        <div class="masonry-overlay"><span>&#10531;</span></div>
-      </div>
-      <div class="masonry-item tall" data-src="images/cafe_interior.png"><img src="images/cafe_interior.png"
-          alt="Cafe Interior">
-        <div class="masonry-overlay"><span>&#10531;</span></div>
-      </div>
-      <div class="masonry-item" data-src="images/pongal.png"><img src="images/pongal.png" alt="Pongal">
-        <div class="masonry-overlay"><span>&#10531;</span></div>
-      </div>
-      <div class="masonry-item" data-src="images/vada.png"><img src="images/vada.png" alt="Vada">
-        <div class="masonry-overlay"><span>&#10531;</span></div>
-      </div>
-      <div class="masonry-item" data-src="images/rasam.png"><img src="images/rasam.png" alt="Rasam">
-        <div class="masonry-overlay"><span>&#10531;</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Lightbox -->
-  <div id="lightbox">
-    <button id="lbClose">&times;</button>
-    <img id="lbImg" src="" alt="">
   </div>
+</section>
 
-  <!-- SECTION 10: CONTACT -->
-  <section id="contact" class="section-contact">
-    <div class="contact-grid">
-      <div class="contact-info reveal-left">
-        <span class="section-label">Visit Us</span>
-        <h2>Come, <em>Experience Us</em></h2>
-        <div class="contact-details">
-          <div class="cd-item"><span class="cd-icon">&#9679;</span>
-            <div><strong>Address</strong>
-              <p>2993, 10/A, 4th Main Rd, Kukkarahalli, Saraswathipuram, Mysuru, Karnataka 570009</p>
-            </div>
-          </div>
-          <div class="cd-item"><span class="cd-icon">&#9679;</span>
-            <div><strong>Phone</strong>
-              <p>096867 10528</p>
-            </div>
-          </div>
-          <div class="cd-item"><span class="cd-icon">&#9679;</span>
-            <div><strong>Email</strong>
-              <p>hello@ingucafe.in</p>
-            </div>
-          </div>
-          <div class="cd-item"><span class="cd-icon">&#9679;</span>
-            <div><strong>Hours</strong>
-              <p>Mon – Sun: 7:00 AM – 10:00 PM</p>
-            </div>
-          </div>
-        </div>
+<!-- SECTION 3: FOOD SHOWCASE -->
+<section id="showcase" class="section-showcase">
+  <div class="showcase-header reveal-up">
+    <span class="section-label">Our Signatures</span>
+    <h2>Crafted with <em>Soul</em></h2>
+  </div>
+  <div class="showcase-track-wrap">
+    <div class="showcase-track" id="showcaseTrack">
+      <div class="food-card" data-tilt>
+        <div class="food-card-img"><img src="images/hero_dosa.png" alt="Masala Dosa"></div>
+        <div class="food-card-body"><h3>Masala Dosa</h3><p>Crispy golden crepe, spiced potato, chutneys</p><span class="price">₹ 120</span></div>
       </div>
-      <div class="contact-form-wrap reveal-right">
-        <form class="contact-form" id="contactForm">
-          <div class="float-group"><input type="text" id="fname" required placeholder=" "><label for="fname">Full
-              Name</label></div>
-          <div class="float-group"><input type="email" id="femail" required placeholder=" "><label for="femail">Email
-              Address</label></div>
-          <div class="float-group"><input type="tel" id="fphone" placeholder=" "><label for="fphone">Phone
-              Number</label></div>
-          <div class="float-group"><select id="ftype">
-              <option value="">Select Enquiry Type</option>
-              <option>Table Reservation</option>
-              <option>Franchise Partnership</option>
-              <option>Catering</option>
-              <option>General</option>
-            </select><label for="ftype">Enquiry Type</label></div>
-          <div class="float-group"><textarea id="fmsg" rows="4" placeholder=" "></textarea><label for="fmsg">Your
-              Message</label></div>
-          <button type="submit" class="btn-primary magnetic w-full">Send Message</button>
-        </form>
+      <div class="food-card" data-tilt>
+        <div class="food-card-img"><img src="images/ghee_roast.png" alt="Ghee Roast"></div>
+        <div class="food-card-body"><h3>Ghee Roast</h3><p>Paper-thin dosa, pure desi ghee, golden crisp</p><span class="price">₹ 140</span></div>
+      </div>
+      <div class="food-card" data-tilt>
+        <div class="food-card-img"><img src="images/idli.png" alt="Idli"></div>
+        <div class="food-card-body"><h3>Soft Idli</h3><p>Steamed rice cakes, sambar, three chutneys</p><span class="price">₹ 80</span></div>
+      </div>
+      <div class="food-card" data-tilt>
+        <div class="food-card-img"><img src="images/filter_coffee.png" alt="Filter Coffee"></div>
+        <div class="food-card-body"><h3>Filter Coffee</h3><p>Traditional South Indian decoction, frothy milk</p><span class="price">₹ 60</span></div>
+      </div>
+      <div class="food-card" data-tilt>
+        <div class="food-card-img"><img src="images/pongal.png" alt="Pongal"></div>
+        <div class="food-card-body"><h3>Ven Pongal</h3><p>Slow-cooked rice lentil, ghee, black pepper</p><span class="price">₹ 100</span></div>
+      </div>
+      <div class="food-card" data-tilt>
+        <div class="food-card-img"><img src="images/vada.png" alt="Vada"></div>
+        <div class="food-card-body"><h3>Medu Vada</h3><p>Crispy lentil fritter, coconut chutney, sambar</p><span class="price">₹ 70</span></div>
+      </div>
+      <div class="food-card" data-tilt>
+        <div class="food-card-img"><img src="images/rasam.png" alt="Rasam"></div>
+        <div class="food-card-body"><h3>Pepper Rasam</h3><p>Tangy, spicy, aromatic soul soup</p><span class="price">₹ 50</span></div>
       </div>
     </div>
-  </section>
+  </div>
+  <div class="showcase-drag-hint">← Drag to explore →</div>
+</section>
 
-  <!-- FOOTER -->
-  <footer id="footer">
-    <div class="footer-inner">
-      <div class="footer-logo">INGU <span>CAFE</span></div>
-      <p class="footer-tagline">Where South Indian tradition meets modern indulgence.</p>
-      <div class="footer-socials">
-        <a href="#" class="social-link" aria-label="Instagram">&#9670;</a>
-        <a href="#" class="social-link" aria-label="Facebook">&#9670;</a>
-        <a href="#" class="social-link" aria-label="Twitter">&#9670;</a>
-        <a href="#" class="social-link" aria-label="YouTube">&#9670;</a>
-      </div>
-      <div class="footer-newsletter">
-        <input type="email" placeholder="Your email for updates..." id="nlEmail">
-        <button class="btn-primary magnetic" onclick="subscribeNL()">Subscribe</button>
-      </div>
-      <div class="footer-links">
-        <a href="#story">Our Story</a>
-        <a href="#menu">Menu</a>
-        <a href="#franchise">Franchise</a>
-        <a href="#contact">Contact</a>
-      </div>
-      <p class="footer-copy">&copy; 2026 INGU CAFE. All rights reserved. Crafted with ❤️ Mysuru.</p>
+<!-- SECTION 4: EXPERIENCE PILLARS -->
+<section id="experience" class="section-experience">
+  <div class="exp-header reveal-up">
+    <span class="section-label">The Promise</span>
+    <h2>The INGU <em>Experience</em></h2>
+  </div>
+  <div class="exp-cards">
+    <div class="exp-card reveal-up" style="--d:0.1s">
+      <div class="exp-icon">&#9670;</div>
+      <h3>Authentic Recipes</h3>
+      <p>Every recipe is rooted in generations of South Indian culinary wisdom, untouched and uncompromised.</p>
     </div>
-  </footer>
+    <div class="exp-card reveal-up" style="--d:0.25s">
+      <div class="exp-icon">&#10047;</div>
+      <h3>Fresh Ingredients</h3>
+      <p>Farm-to-table freshness. We source locally and prepare daily — no preservatives, no shortcuts.</p>
+    </div>
+    <div class="exp-card reveal-up" style="--d:0.4s">
+      <div class="exp-icon">&#9734;</div>
+      <h3>Crafted Daily</h3>
+      <p>Our batters are ground at dawn. Our chutneys are made by hand. Every single morning, without exception.</p>
+    </div>
+  </div>
+</section>
 
-  <!-- GSAP + ScrollTrigger -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
-  <script src="script.js"></script>
+<!-- SECTION 5: MENU -->
+<section id="menu" class="section-menu">
+  <div class="menu-header reveal-up">
+    <span class="section-label">Explore</span>
+    <h2>Our <em>Menu</em></h2>
+  </div>
+  <div class="menu-cats">
+    <button class="cat-btn active" data-cat="breakfast">Breakfast</button>
+    <button class="cat-btn" data-cat="signature">Signature Dishes</button>
+    <button class="cat-btn" data-cat="beverages">Beverages</button>
+    <button class="cat-btn" data-cat="desserts">Desserts</button>
+  </div>
+  <div class="menu-grid" id="menuGrid">
+    <!-- Breakfast -->
+    <div class="menu-item" data-cat="breakfast">
+      <img src="images/idli.png" alt="Idli"><div class="mi-body"><h4>Soft Idli (3 pcs)</h4><p>With sambar &amp; 2 chutneys</p><span>₹ 80</span></div>
+    </div>
+    <div class="menu-item" data-cat="breakfast">
+      <img src="images/hero_dosa.png" alt="Masala Dosa"><div class="mi-body"><h4>Masala Dosa</h4><p>Spiced potato filling, chutneys</p><span>₹ 120</span></div>
+    </div>
+    <div class="menu-item" data-cat="breakfast">
+      <img src="images/pongal.png" alt="Pongal"><div class="mi-body"><h4>Ven Pongal</h4><p>Ghee, pepper, cashews</p><span>₹ 100</span></div>
+    </div>
+    <div class="menu-item" data-cat="breakfast">
+      <img src="images/vada.png" alt="Vada"><div class="mi-body"><h4>Medu Vada (2 pcs)</h4><p>Sambar &amp; coconut chutney</p><span>₹ 70</span></div>
+    </div>
+    <!-- Signature -->
+    <div class="menu-item" data-cat="signature" style="display:none">
+      <img src="images/ghee_roast.png" alt="Ghee Roast"><div class="mi-body"><h4>Ghee Roast Dosa</h4><p>Pure desi ghee, paper thin</p><span>₹ 140</span></div>
+    </div>
+    <div class="menu-item" data-cat="signature" style="display:none">
+      <img src="images/rasam.png" alt="Rasam"><div class="mi-body"><h4>Pepper Rasam</h4><p>Aromatic, tangy soul soup</p><span>₹ 50</span></div>
+    </div>
+    <div class="menu-item" data-cat="signature" style="display:none">
+      <img src="images/hero_dosa.png" alt="Special Dosa"><div class="mi-body"><h4>INGU Special Dosa</h4><p>Chef's signature creation</p><span>₹ 180</span></div>
+    </div>
+    <!-- Beverages -->
+    <div class="menu-item" data-cat="beverages" style="display:none">
+      <img src="images/filter_coffee.png" alt="Filter Coffee"><div class="mi-body"><h4>Filter Coffee</h4><p>Traditional decoction, frothy</p><span>₹ 60</span></div>
+    </div>
+    <div class="menu-item" data-cat="beverages" style="display:none">
+      <img src="images/rasam.png" alt="Rasam"><div class="mi-body"><h4>Masala Chai</h4><p>Spiced milk tea, fresh ginger</p><span>₹ 45</span></div>
+    </div>
+    <!-- Desserts -->
+    <div class="menu-item" data-cat="desserts" style="display:none">
+      <img src="images/pongal.png" alt="Sweet Pongal"><div class="mi-body"><h4>Sweet Pongal</h4><p>Jaggery, cardamom, cashews</p><span>₹ 90</span></div>
+    </div>
+    <div class="menu-item" data-cat="desserts" style="display:none">
+      <img src="images/filter_coffee.png" alt="Payasam"><div class="mi-body"><h4>Rice Payasam</h4><p>Kheer style, cardamom, saffron</p><span>₹ 80</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6: PARALLAX -->
+<section id="parallax-quote" class="section-parallax">
+  <div class="parallax-bg" id="parallaxBg">
+    <img src="images/parallax_bg.png" alt="South Indian Feast">
+  </div>
+  <div class="parallax-overlay"></div>
+  <div class="parallax-text">
+    <h2 class="split-text" id="splitText">Every Plate Tells A Story.</h2>
+  </div>
+</section>
+
+<!-- SECTION 7: TESTIMONIALS -->
+<section id="testimonials" class="section-testimonials">
+  <div class="test-header reveal-up">
+    <span class="section-label">Customer Love</span>
+    <h2>What Our Guests <em>Say</em></h2>
+  </div>
+  <div class="test-track-wrap">
+    <div class="test-track" id="testTrack">
+      <div class="test-card glass">
+        <div class="stars">★★★★★</div>
+        <p>"The filter coffee alone is worth the trip. Absolutely authentic — tastes just like my grandmother's kitchen."</p>
+        <div class="test-author"><div class="test-avatar" style="background:#C9A15B">A</div><span>Ananya R., Chennai</span></div>
+      </div>
+      <div class="test-card glass">
+        <div class="stars">★★★★★</div>
+        <p>"Best masala dosa in the city, hands down. The crispy texture, the perfectly spiced filling — heaven on a plate."</p>
+        <div class="test-author"><div class="test-avatar" style="background:#8B5E3C">V</div><span>Vikram S., Bangalore</span></div>
+      </div>
+      <div class="test-card glass">
+        <div class="stars">★★★★★</div>
+        <p>"The ambiance, the food, the service — everything screams premium. INGU CAFE is in a league of its own."</p>
+        <div class="test-author"><div class="test-avatar" style="background:#5C3D2E">P</div><span>Priya M., Coimbatore</span></div>
+      </div>
+      <div class="test-card glass">
+        <div class="stars">★★★★★</div>
+        <p>"I've eaten South Indian food all my life. INGU brings something special — it's traditional but elevated beautifully."</p>
+        <div class="test-author"><div class="test-avatar" style="background:#7A5230">K</div><span>Karthik N., Hyderabad</span></div>
+      </div>
+      <div class="test-card glass">
+        <div class="stars">★★★★★</div>
+        <p>"The ghee roast dosa is a masterpiece. Crispy, flavourful, and perfectly paired with their signature sambar."</p>
+        <div class="test-author"><div class="test-avatar" style="background:#C9A15B">S</div><span>Shalini T., Mumbai</span></div>
+      </div>
+      <div class="test-card glass">
+        <div class="stars">★★★★★</div>
+        <p>"Every visit feels like a celebration. The warmth of the staff and the authenticity of food makes it special."</p>
+        <div class="test-author"><div class="test-avatar" style="background:#8B5E3C">R</div><span>Rajan L., Madurai</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 8: FRANCHISE -->
+<section id="franchise" class="section-franchise">
+  <div class="franchise-inner">
+    <span class="section-label" style="color:#C9A15B">Partnership</span>
+    <h2>Bring INGU CAFE<br><em>To Your City</em></h2>
+    <p>Join India's fastest-growing premium South Indian dining brand. We provide end-to-end support — from training to marketing.</p>
+    <div class="counters">
+      <div class="counter-item reveal-up">
+        <span class="counter-num" data-target="50">0</span><span class="counter-suf">+</span>
+        <p>Locations</p>
+      </div>
+      <div class="counter-item reveal-up" style="--d:0.15s">
+        <span class="counter-num" data-target="1000000">0</span><span class="counter-suf">M+</span>
+        <p>Customers Served</p>
+      </div>
+      <div class="counter-item reveal-up" style="--d:0.3s">
+        <span class="counter-num" data-target="95">0</span><span class="counter-suf">%</span>
+        <p>Customer Satisfaction</p>
+      </div>
+    </div>
+    <a href="#contact" class="btn-primary magnetic large">Become A Partner</a>
+  </div>
+</section>
+
+<!-- SECTION 9: INSTAGRAM GALLERY -->
+<section id="gallery" class="section-gallery">
+  <div class="gal-header reveal-up">
+    <span class="section-label">@ingucafe</span>
+    <h2>Follow Our <em>Journey</em></h2>
+  </div>
+  <div class="masonry-grid" id="masonryGrid">
+    <div class="masonry-item" data-src="images/hero_dosa.png"><img src="images/hero_dosa.png" alt="Masala Dosa"><div class="masonry-overlay"><span>&#10531;</span></div></div>
+    <div class="masonry-item tall" data-src="images/brand_story.png"><img src="images/brand_story.png" alt="Heritage"><div class="masonry-overlay"><span>&#10531;</span></div></div>
+    <div class="masonry-item" data-src="images/filter_coffee.png"><img src="images/filter_coffee.png" alt="Filter Coffee"><div class="masonry-overlay"><span>&#10531;</span></div></div>
+    <div class="masonry-item" data-src="images/ghee_roast.png"><img src="images/ghee_roast.png" alt="Ghee Roast"><div class="masonry-overlay"><span>&#10531;</span></div></div>
+    <div class="masonry-item tall" data-src="images/cafe_interior.png"><img src="images/cafe_interior.png" alt="Cafe Interior"><div class="masonry-overlay"><span>&#10531;</span></div></div>
+    <div class="masonry-item" data-src="images/pongal.png"><img src="images/pongal.png" alt="Pongal"><div class="masonry-overlay"><span>&#10531;</span></div></div>
+    <div class="masonry-item" data-src="images/vada.png"><img src="images/vada.png" alt="Vada"><div class="masonry-overlay"><span>&#10531;</span></div></div>
+    <div class="masonry-item" data-src="images/rasam.png"><img src="images/rasam.png" alt="Rasam"><div class="masonry-overlay"><span>&#10531;</span></div></div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div id="lightbox">
+  <button id="lbClose">&times;</button>
+  <img id="lbImg" src="" alt="">
+</div>
+
+<!-- SECTION 10: CONTACT -->
+<section id="contact" class="section-contact">
+  <div class="contact-grid">
+    <div class="contact-info reveal-left">
+      <span class="section-label">Visit Us</span>
+      <h2>Come, <em>Experience Us</em></h2>
+      <div class="contact-details">
+        <div class="cd-item"><span class="cd-icon">&#9679;</span><div><strong>Address</strong><p>2993, 10/A, 4th Main Rd, Kukkarahalli, Saraswathipuram, Mysuru, Karnataka 570009</p></div></div>
+        <div class="cd-item"><span class="cd-icon">&#9679;</span><div><strong>Phone</strong><p>096867 10528</p></div></div>
+        <div class="cd-item"><span class="cd-icon">&#9679;</span><div><strong>Email</strong><p>hello@ingucafe.in</p></div></div>
+        <div class="cd-item"><span class="cd-icon">&#9679;</span><div><strong>Hours</strong><p>Mon – Sun: 7:00 AM – 10:00 PM</p></div></div>
+      </div>
+    </div>
+    <div class="contact-form-wrap reveal-right">
+      <form class="contact-form" id="contactForm">
+        <div class="float-group"><input type="text" id="fname" required placeholder=" "><label for="fname">Full Name</label></div>
+        <div class="float-group"><input type="email" id="femail" required placeholder=" "><label for="femail">Email Address</label></div>
+        <div class="float-group"><input type="tel" id="fphone" placeholder=" "><label for="fphone">Phone Number</label></div>
+        <div class="float-group"><select id="ftype"><option value="">Select Enquiry Type</option><option>Table Reservation</option><option>Franchise Partnership</option><option>Catering</option><option>General</option></select><label for="ftype">Enquiry Type</label></div>
+        <div class="float-group"><textarea id="fmsg" rows="4" placeholder=" "></textarea><label for="fmsg">Your Message</label></div>
+        <button type="submit" class="btn-primary magnetic w-full">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">INGU <span>CAFE</span></div>
+    <p class="footer-tagline">Where South Indian tradition meets modern indulgence.</p>
+    <div class="footer-socials">
+      <a href="#" class="social-link" aria-label="Instagram">&#9670;</a>
+      <a href="#" class="social-link" aria-label="Facebook">&#9670;</a>
+      <a href="#" class="social-link" aria-label="Twitter">&#9670;</a>
+      <a href="#" class="social-link" aria-label="YouTube">&#9670;</a>
+    </div>
+    <div class="footer-newsletter">
+      <input type="email" placeholder="Your email for updates..." id="nlEmail">
+      <button class="btn-primary magnetic" onclick="subscribeNL()">Subscribe</button>
+    </div>
+    <div class="footer-links">
+      <a href="#story">Our Story</a>
+      <a href="#menu">Menu</a>
+      <a href="#franchise">Franchise</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <p class="footer-copy">&copy; 2026 INGU CAFE. All rights reserved. Crafted with ❤️ Mysuru.</p>
+  </div>
+</footer>
+
+<!-- GSAP + ScrollTrigger -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
+<script src="script.js"></script>
 </body>
-
 </html>
